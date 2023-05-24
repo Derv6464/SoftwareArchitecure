@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 </head>   
@@ -7,12 +7,18 @@
     <main class="container">
     <nav>
         <ul>
-          <li><a href="index.html"><strong>Darkplace Hosptial</strong></a></li>
+          <li><a href="/"><strong>Darkplace Hosptial</strong></a></li>
         </ul>
         <ul>
-            <li><a href="patientLookup.html">Search Patient</a></li>
-            <li><a href="addpatient.html">Add Patient</a></li>
-            <li><a href="https://www.channel4.com/programmes/garth-marenghis-darkplace" >About</a></li>
+            <li><form method="post" action="/processForm">
+                <button type="submit" name="action" value="addpatient">Add new Patient</button>
+            </form></li>
+            <li><form method="post" action="/processForm">
+                <button type="submit" name="action" value="patientlookup">Search Patient</button>
+            </form></li>
+            <li><form>
+                <a href="https://www.channel4.com/programmes/garth-marenghis-darkplace" >About</a>
+            </form></li>
         </ul>
       </nav>
     </main>

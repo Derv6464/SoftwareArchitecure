@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <title>Darkplace hospital</title>
+</head>
+<body>
+  <main class="container">
+    <nav>
+        <ul>
+          <li><a href="/"><strong>Darkplace Hosptial</strong></a></li>
+        </ul>
+        <ul>
+            <li><form method="post" action="/processForm">
+                <button type="submit" name="action" value="addpatient">Add new Patient</button>
+            </form></li>
+            <li><form method="post" action="/processForm">
+                <button type="submit" name="action" value="patientlookup">Search Patient</button>
+            </form></li>
+            
+            <li><form>
+                <a href="https://www.channel4.com/programmes/garth-marenghis-darkplace" >About</a>
+            </form></li>
+        </ul>
+      </nav>
+    </main>
+    <main class="container">
+        <form method="post" action="/processForm">
+            <button type="submit" name="action" value="addpatient">Add new Patient</button>
+            <button type="submit" name="action" value="patientLookup">Search patient database</button>
+        </form>
+    </main>
+
+</body>
+</html>
