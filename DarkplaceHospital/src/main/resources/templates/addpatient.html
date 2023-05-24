@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>   
+<body>
+    <main class="container">
+    <nav>
+        <ul>
+          <li><a href="index.html"><strong>Darkplace Hosptial</strong></a></li>
+        </ul>
+        <ul>
+            <li><a href="patientLookup.html">Search Patient</a></li>
+            <li><a href="addpatient.html">Add Patient</a></li>
+            <li><a href="https://www.channel4.com/programmes/garth-marenghis-darkplace" >About</a></li>
+        </ul>
+      </nav>
+    </main>
+    <main class="container">
+        <form>
+            <div class ="grid">
+                <label for="firstname">
+                    First name
+                    <input type="text" id="firstname" name="firstname" placeholder="First name" required>
+                </label>
+                <label for="lastname">
+                    Last name
+                    <input type="text" id="lastname" name="lastname" placeholder="Last name" required>
+                </label>
+            </div>
+            <div class = "grid">
+                <label for="age">
+                    Age
+                    <input type="number" id="age" name="age" placeholder="Age" required>    
+                </label>
+            </div>
+            <div class="grid">
+                <label for="medInfo">
+                    Medical information
+                    <textarea id="medInfo" name="medInfo" placeholder="Medical information" required></textarea>
+                </label>
+            </div>
+            <div class="grid">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
