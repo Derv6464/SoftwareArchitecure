@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Darkplace Hospital</title>
+</head>
+<body>
+    <h1>New Patient Form</h1>
+    <form action="#" th:action="@{/savePatient}" th:object="${patient}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required/><br/>
+        
+        <label for="secondName">Second Name:</label>
+        <input type="text" id="secondName" name="secondName" required/><br/>
+        
+        <label for="dob">Date of Birth:</label>
+        <input type="text" id="dob" name="dob" required/><br/>
+        
+        <label for="medicalInformation">Medical Information:</label>
+        <input type="text" id="medicalInformation" name="medicalInformation" required/><br/>
+        
+        <label for="isDead">Is Dead:</label>
+        <input type="checkbox" id="isDead" name="isDead"/><br/>
+        
+        <input type="submit" value="Save"/>
+    </form>
+</body>
+</html>
