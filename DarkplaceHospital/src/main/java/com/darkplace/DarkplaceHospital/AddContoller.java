@@ -11,12 +11,24 @@ import org.springframework.ui.Model;
 public class AddContoller {
 
     @GetMapping("/")
-    public String home(Model model) {
-        // Add any data you want to pass to the template
-        model.addAttribute("pageTitle", "Darkplace Hospital");
+    public String index(Model model) {
+        return "login";
+    }
 
-        // Return the template name
-        return "index";
+    @PostMapping("/loginSubmit")
+    public String login(@RequestParam("username") String username,
+            @RequestParam("password") String password) {
+        if (username.equals("admin") && password.equals("admin")) {
+            return "home";
+        } else {
+            return "login";
+        }
+
+    }
+
+    @GetMapping("/home")
+    public String home() {
+        return "home";
     }
 
     @PostMapping("/processForm")
@@ -24,18 +36,23 @@ public class AddContoller {
         if (action.equals("addpatient")) {
             // Code to handle adding a new patient
             return "addpatient";
-        } else if (action.equals("patientLookup")) {
+        } else if (action.equals("patientlookup")) {
             // Code to handle searching the patient database
             // Redirect or process the search based on your requirements
-            return "patientLookup";
+            return "searchpatient";
         }
 
         // Default redirect if no matching action is found
-        return "index";
+        return "home";
     }
 
     @GetMapping("/addpatient")
     public String add() {
-        return "add";
+        return "addpatient";
+    }
+
+    @GetMapping("/searchpatient")
+    public String search() {
+        return "searchpatient";
     }
 }
