@@ -5,14 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.boot.CommandLineRunner;
 
-
 @SpringBootApplication
 public class DarkplaceHospitalApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DarkplaceHospitalApplication.class, args);
 	}
 	
-
 @Bean
 	public CommandLineRunner demo(PatientsRepository repository) {
 	  return (args) -> {
