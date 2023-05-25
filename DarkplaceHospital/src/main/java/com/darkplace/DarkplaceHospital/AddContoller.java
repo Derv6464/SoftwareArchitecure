@@ -1,7 +1,7 @@
 package com.darkplace.DarkplaceHospital;
 
 import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 
 @Controller
 public class AddContoller {
+
+    @Autowired
+    private PatientsRepository repository;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -51,8 +54,19 @@ public class AddContoller {
         return "addpatient";
     }
 
+    @PostMapping("/addPatientToDB")
+    public String addPatientToDB(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname,
+            @RequestParam("dob") String dob, @RequestParam("medInfo") String medInfo,
+            @RequestParam("dead") Boolean dead) {
+
+        Patients submittedPatient = new Patients(firstname, lastname, dob, medInfo, dead);
+        repository.save(submittedPatient);
+        return "home";
+    }
+
     @GetMapping("/searchpatient")
     public String search() {
         return "searchpatient";
     }
+
 }

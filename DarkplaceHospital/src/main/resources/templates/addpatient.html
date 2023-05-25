@@ -23,7 +23,7 @@
       </nav>
     </main>
     <main class="container">
-        <form>
+        <form method="post" action="addPatientToDB">
             <div class ="grid">
                 <label for="firstname">
                     First name
@@ -35,15 +35,21 @@
                 </label>
             </div>
             <div class = "grid">
-                <label for="age">
-                    Age
-                    <input type="number" id="age" name="age" placeholder="Age" required>    
+                <label for="dob">
+                    Date of Birth
+                    <input type="text" id="dob" name="dob" placeholder="Date of Birth" required>    
                 </label>
             </div>
             <div class="grid">
                 <label for="medInfo">
                     Medical information
                     <textarea id="medInfo" name="medInfo" placeholder="Medical information" required></textarea>
+                </label>
+            </div>
+            <div class="grid">
+                <label for="dead">
+                    Is the patient dead?
+                    <input type="checkbox" id="dead" name="dead" required></input>
                 </label>
             </div>
             <div class="grid">
