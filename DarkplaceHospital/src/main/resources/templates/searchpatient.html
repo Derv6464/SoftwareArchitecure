@@ -10,11 +10,11 @@
           <li><a href="/"><strong>Darkplace Hosptial</strong></a></li>
         </ul>
         <ul>
-            <li><form method="post" action="/processForm">
+            <li><form method="post" action="/addpatient">
                 <button type="submit" name="action" value="addpatient">Add new Patient</button>
             </form></li>
-            <li><form method="post" action="/processForm">
-                <button type="submit" name="action" value="patientlookup">Search Patient</button>
+            <li><form method="post" action="/searchpatient">
+                <button type="submit" name="action" value="searchpatient">Search Patient</button>
             </form></li>
             <li><form>
                 <a href="https://www.channel4.com/programmes/garth-marenghis-darkplace" >About</a>
@@ -23,8 +23,44 @@
       </nav>
     </main>
     <main class="container">
-        patient info here 
-        table?
+            <form id="searchForm" method="post" action="searchSpecificPatient">
+                <input type="search" id="searchbar" name="searchbar" placeholder="Search by Surname">
+            </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of Birth</th>
+                    <th>Medical Information</th>
+                    <th>Is Dead</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="index : ${#numbers.sequence(0, fNames.size() - 1)}">
+                    <td th:text="${fNames[index]}"></td>
+                    <td th:text="${lNames[index]}"></td>
+                    <td th:text="${dobs[index]}"></td>
+                    <td th:text="${medInfos[index]}"></td>
+                    <td th:text="${deads[index]}"></td>
+                </tr>
+            </tbody>
+        </table>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var searchInput = document.getElementById("searchbar");
+        
+            searchInput.addEventListener("keypress", function(event) {
+                if (event.keyCode === 13) { 
+                    event.preventDefault();
+                    document.getElementById("searchForm").submit();
+                }
+            });
+        });
+    </script>
+    
 </body>
 </html>

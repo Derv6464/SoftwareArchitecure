@@ -21,8 +21,8 @@ public class Patients {
   private String MEDICALINFORMATION;
   private Boolean ISDEAD;
 
-
-  protected Patients() {}
+  protected Patients() {
+  }
 
   public Patients(String NAME, String SECONDNAME, String DOB, String MEDICALINFORMATION, Boolean ISDEAD) {
     this.NAME = NAME;
@@ -35,7 +35,7 @@ public class Patients {
   @Override
   public String toString() {
     return String.format(
-        "Customer[ID=%d, NAME='%s', SECONDNAME='%s', DOB='%s', MEDICALINFORMATION='%s', ISDEAD='%s']",
+        "%d|\t'%s'|\t'%s'|\t'%s'|\t'%s'|\t'%s'\n",
         ID, NAME, SECONDNAME, DOB, MEDICALINFORMATION, ISDEAD);
   }
 

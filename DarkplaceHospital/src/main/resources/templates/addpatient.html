@@ -2,6 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
+    <script>
+        var checkbox = document.getElementById('dead');
+        var hiddenInput = document.querySelector('input[name="dead"]');
+      
+        checkbox.addEventListener('change', function() {
+          if (checkbox.checked) {
+            hiddenInput.value = "true";
+          } else {
+            hiddenInput.value = "false";
+          }
+        });
+      </script>
 </head>   
 <body>
     <main class="container">
@@ -10,11 +23,11 @@
           <li><a href="/"><strong>Darkplace Hosptial</strong></a></li>
         </ul>
         <ul>
-            <li><form method="post" action="/processForm">
+            <li><form method="post" action="/addpatient">
                 <button type="submit" name="action" value="addpatient">Add new Patient</button>
             </form></li>
-            <li><form method="post" action="/processForm">
-                <button type="submit" name="action" value="patientlookup">Search Patient</button>
+            <li><form method="post" action="/searchpatient">
+                <button type="submit" name="action" value="searchpatient">Search Patient</button>
             </form></li>
             <li><form>
                 <a href="https://www.channel4.com/programmes/garth-marenghis-darkplace" >About</a>
@@ -23,7 +36,7 @@
       </nav>
     </main>
     <main class="container">
-        <form method="post" action="addPatientToDB">
+        <form method="post" action="/addPatientToDB">
             <div class ="grid">
                 <label for="firstname">
                     First name
@@ -37,7 +50,7 @@
             <div class = "grid">
                 <label for="dob">
                     Date of Birth
-                    <input type="text" id="dob" name="dob" placeholder="Date of Birth" required>    
+                    <input type="text" id="dob" name="dob" placeholder="YYYY-MM-DD" required>    
                 </label>
             </div>
             <div class="grid">
@@ -49,7 +62,8 @@
             <div class="grid">
                 <label for="dead">
                     Is the patient dead?
-                    <input type="checkbox" id="dead" name="dead" required></input>
+                    <input type="checkbox" id="dead" name="dead"></input>
+                    <input type="hidden" id="dead" name="dead" value="false"></input>
                 </label>
             </div>
             <div class="grid">

@@ -11,11 +11,11 @@
           <li><a href="/"><strong>Darkplace Hosptial</strong></a></li>
         </ul>
         <ul>
-            <li><form method="post" action="/processForm">
+            <li><form method="post" action="/addpatient">
                 <button type="submit" name="action" value="addpatient">Add new Patient</button>
             </form></li>
-            <li><form method="post" action="/processForm">
-                <button type="submit" name="action" value="patientlookup">Search Patient</button>
+            <li><form method="post" action="/searchpatient">
+                <button type="submit" name="action" value="searchpatient">Search Patient</button>
             </form></li>
             
             <li><form>
@@ -24,12 +24,5 @@
         </ul>
       </nav>
     </main>
-    <main class="container">
-        <form method="post" action="/processForm">
-            <button type="submit" name="action" value="addpatient">Add new Patient</button>
-            <button type="submit" name="action" value="patientLookup">Search patient database</button>
-        </form>
-    </main>
-
 </body>
 </html>
