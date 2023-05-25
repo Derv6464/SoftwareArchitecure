@@ -1,16 +1,10 @@
-CREATE SEQUENCE patients_seq START WITH 1 INCREMENT BY 1;
+DROP TABLE IF EXISTS PATIENTS;
 
-
-
-
-
--- INSERT INTO patients (id, name) VALUES (1, 'Garth');
--- INSERT INTO patients (id, name) VALUES (2, 'Thornton');
--- INSERT INTO patients (id, name) VALUES (3, 'Liz');
--- INSERT INTO patients (id, name) VALUES (4, 'Hopper');
--- INSERT INTO patients (id, name) VALUES (5, 'Sanchez');
-
--- INSERT INTO TBL_EMPLOYEES (first_name, last_name, email) VALUES
---   ('Lokesh', 'Gupta', 'abc@gmail.com'),
---   ('Deja', 'Vu', 'xyz@email.com'),
---   ('Caption', 'America', 'cap@marvel.com');
+CREATE TABLE PATIENTS (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  NAME VARCHAR(250) NOT NULL,
+  SECONDNAME VARCHAR(250) NOT NULL,
+  DOB DATE DEFAULT NULL,
+  MEDICALINFORMATION VARCHAR(250) DEFAULT NULL,
+  ISDEAD BOOLEAN DEFAULT FALSE
+);
