@@ -15,11 +15,11 @@ public class DarkplaceHospitalApplication {
 	public CommandLineRunner demo(PatientsRepository repository) {
 		return (args) -> {
 			// save a few customers
-			String patientName = "Timmy";
-			String patientSecondName = "Crenshaw";
-			String patientDOB = "2022-01-01";
-			String patientMedicalInformation = "blind";
-			Boolean patientIsDead = true;
+			String patientName = "Rick";
+			String patientSecondName = "Dagless";
+			String patientDOB = "1967-02-14";
+			String patientMedicalInformation = "Myopia";
+			Boolean patientIsDead = false;
 			repository.save(
 					new Patients(patientName, patientSecondName, patientDOB, patientMedicalInformation, patientIsDead));
 		};

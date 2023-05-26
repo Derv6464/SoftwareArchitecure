@@ -20,6 +20,9 @@ public class AddContoller {
     @Autowired
     private PatientsRepository repository;
 
+    @Autowired
+    private UsersRepository whitelist;
+
     @GetMapping("/")
     public String index(Model model) {
         return "login";
@@ -28,12 +31,15 @@ public class AddContoller {
     @PostMapping("/loginSubmit")
     public String login(@RequestParam("username") String username,
             @RequestParam("password") String password) {
-        if (username.equals("admin") && password.equals("admin")) {
-            return "home";
-        } else {
-            return "login";
-        }
 
+        Iterable<Users> users = whitelist.findAll();
+
+        for (Users user : users) {
+            if (user.getUSERNAME().equals(username) && user.getPASSWORD().equals(password)) {
+                return "home";
+            }
+        }
+        return "login";
     }
 
     @GetMapping("/home")
