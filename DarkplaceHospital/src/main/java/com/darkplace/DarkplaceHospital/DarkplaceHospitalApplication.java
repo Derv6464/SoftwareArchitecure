@@ -14,14 +14,16 @@ public class DarkplaceHospitalApplication {
 	@Bean
 	public CommandLineRunner demo(PatientsRepository repository) {
 		return (args) -> {
-			// save a few customers
-			String patientName = "Rick";
-			String patientSecondName = "Dagless";
-			String patientDOB = "1967-02-14";
-			String patientMedicalInformation = "Myopia";
-			Boolean patientIsDead = false;
-			repository.save(
-					new Patients(patientName, patientSecondName, patientDOB, patientMedicalInformation, patientIsDead));
+			Patients rick = new Patients("Rick", "Dagless", "1967-02-14", "Myopia",false);
+			Patients liz = new Patients("Liz", "Asher", "1968-01-09", "Visions,Lycanthropy",true);
+			Patients lucien = new Patients("Lucien", "Sanchez", "1975-11-17", "Lycanthropy",false);
+			Patients thornton = new Patients("Thornton", "Reed", "1964-04-01", "Phones",false);
+			Patients temp = new Patients("the", "temp", "1977-09-24", "screwdrivers in chest",true);
+			repository.save(rick);
+			repository.save(liz);
+			repository.save(lucien);
+			repository.save(thornton);
+			repository.save(temp);
 		};
 	}
 }
