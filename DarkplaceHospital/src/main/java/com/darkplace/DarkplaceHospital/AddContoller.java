@@ -56,7 +56,8 @@ public class AddContoller {
     public String addPatientToDB(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname,
             @RequestParam("dob") String dob, @RequestParam("medInfo") String medInfo,
             @RequestParam("dead") Boolean dead) {
-        Patients submittedPatient = new Patients(firstname, lastname, dob, medInfo, dead);
+        String[] meds = {"Morphine", "Peniectomies", "Oxycotion","Adderal","Xanax","Paracetamol","Sudafed", "Exputex", "Zertec"};
+        Patients submittedPatient = new Patients(firstname, lastname, dob, medInfo, dead, meds[(int)(Math.random()*meds.length)]);
         repository.save(submittedPatient);
         return "home";
     }
@@ -73,8 +74,9 @@ public class AddContoller {
         List<Date> dobs = new ArrayList<Date>();
         List<String> medInfos = new ArrayList<String>();
         List<Boolean> deads = new ArrayList<Boolean>();
+        List<String> meds = new ArrayList<String>();
 
-        displayTable(model, ids, fNames, lNames, dobs, medInfos, deads);
+        displayTable(model, ids, fNames, lNames, dobs, medInfos, deads,meds);
 
         return "searchpatient";
     }
@@ -87,13 +89,14 @@ public class AddContoller {
     }
 
     public void displayTable(Model model, Iterable<Patients> ids, List<String> fNames, List<String> lNames,
-            List<Date> dobs, List<String> medInfos, List<Boolean> deads) {
+            List<Date> dobs, List<String> medInfos, List<Boolean> deads, List<String> meds) {
         for (Patients id : ids) {
             fNames.add(id.getNAME());
             lNames.add(id.getSECONDNAME());
             dobs.add(id.getDOB());
             medInfos.add(id.getMEDICALINFORMATION());
             deads.add(id.getISDEAD());
+            meds.add(id.getMEDICATION());
 
         }
         model.addAttribute("fNames", fNames);
@@ -101,6 +104,7 @@ public class AddContoller {
         model.addAttribute("dobs", dobs);
         model.addAttribute("medInfos", medInfos);
         model.addAttribute("deads", deads);
+        model.addAttribute("meds", meds);
     }
 
 }
