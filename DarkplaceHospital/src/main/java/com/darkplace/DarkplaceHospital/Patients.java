@@ -20,23 +20,25 @@ public class Patients {
   private Date DOB;
   private String MEDICALINFORMATION;
   private Boolean ISDEAD;
+  private String MEDICATION;
 
   protected Patients() {
   }
 
-  public Patients(String NAME, String SECONDNAME, String DOB, String MEDICALINFORMATION, Boolean ISDEAD) {
+  public Patients(String NAME, String SECONDNAME, String DOB, String MEDICALINFORMATION, Boolean ISDEAD, String MEDICATION) {
     this.NAME = NAME;
     this.SECONDNAME = SECONDNAME;
     this.DOB = convertToDate(DOB);
     this.MEDICALINFORMATION = MEDICALINFORMATION;
     this.ISDEAD = ISDEAD;
+    this.MEDICATION = MEDICATION;
   }
 
   @Override
   public String toString() {
     return String.format(
-        "%d|\t'%s'|\t'%s'|\t'%s'|\t'%s'|\t'%s'\n",
-        ID, NAME, SECONDNAME, DOB, MEDICALINFORMATION, ISDEAD);
+        "%d|\t'%s'|\t'%s'|\t'%s'|\t'%s'|\t'%s'|\t'%s'\n",
+        ID, NAME, SECONDNAME, DOB, MEDICALINFORMATION, ISDEAD,MEDICATION);
   }
 
   private Date convertToDate(String dateString) {
@@ -66,5 +68,9 @@ public class Patients {
 
   public Boolean getISDEAD() {
     return ISDEAD;
+  }
+
+  public String getMEDICATION() {
+    return MEDICATION;
   }
 }
