@@ -14,3 +14,7 @@ to
 spring.datasource.url=jdbc:h2:file:./data/demo 
 ```
 Run the code in any appropriate IDE.
+
+## To login 
+User: admin
+Password: password
