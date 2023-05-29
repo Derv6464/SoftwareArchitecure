@@ -26,6 +26,8 @@
             <form id="searchForm" method="post" action="searchSpecificPatient">
                 <input type="search" id="searchbar" name="searchbar" placeholder="Search by Surname">
             </form>
+            <p id="error" th:text="${errorMessage}" th:if="${errorMessage}">
+            </p>
 
         <table>
             <thead>

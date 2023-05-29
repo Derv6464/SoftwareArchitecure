@@ -34,6 +34,8 @@
                     </label>
                
             </div>
+            <p id="error" th:text="${errorMessage}" th:if="${errorMessage}">
+            </p>
             <div class="grid">
                 <button type="submit">Submit</button>
             </div>

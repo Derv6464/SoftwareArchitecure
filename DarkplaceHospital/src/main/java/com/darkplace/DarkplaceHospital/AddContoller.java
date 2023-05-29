@@ -28,19 +28,28 @@ public class AddContoller {
         return "login";
     }
 
+    @RequestMapping("/login")
+    public String login(Model model, String error) {
+        if (error != null) {
+            model.addAttribute("errorMessage", error);
+        }
+        return "login";
+    }
+
     @PostMapping("/loginSubmit")
-    public String login(@RequestParam("username") String username,
+    public RedirectView login(@RequestParam("username") String username,
             @RequestParam("password") String password) {
 
         Iterable<Users> users = whitelist.findAll();
 
         for (Users user : users) {
             if (user.getUSERNAME().equals(username) && user.getPASSWORD().equals(password)) {
-                return "home";
+                return new RedirectView("/home");
             }
         }
-        return "login";
+        return new RedirectView("/login?error=Invalid Username and Password");
     }
+
     @GetMapping("/home")
     public String home() {
         return "home";
@@ -55,16 +64,22 @@ public class AddContoller {
     public String addPatientToDB(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname,
             @RequestParam("dob") String dob, @RequestParam("medInfo") String medInfo,
             @RequestParam("dead") Boolean dead) {
-        String[] meds = {"Morphine", "Peniectomies", "Oxycotion","Adderal","Xanax","Paracetamol","Sudafed", "Exputex", "Zertec"};
-        Patients submittedPatient = new Patients(firstname, lastname, dob, medInfo, dead, meds[(int)(Math.random()*meds.length)]);
+        String[] meds = { "Morphine", "Peniectomies", "Oxycotion", "Adderal", "Xanax", "Paracetamol", "Sudafed",
+                "Exputex", "Zertec" };
+        Patients submittedPatient = new Patients(firstname, lastname, dob, medInfo, dead,
+                meds[(int) (Math.random() * meds.length)]);
         repository.save(submittedPatient);
         return "home";
     }
+
     @RequestMapping("/searchpatient")
-    public String searchpatient(Model model, String surname) {
+    public String searchpatient(Model model, String surname, String error) {
         Iterable<Patients> ids = repository.findAll();
         if (surname != null) {
             ids = repository.findBySECONDNAME(surname);
+        }
+        if (error != null) {
+            model.addAttribute("errorMessage", error);
         }
 
         List<String> fNames = new ArrayList<String>();
@@ -74,15 +89,23 @@ public class AddContoller {
         List<Boolean> deads = new ArrayList<Boolean>();
         List<String> meds = new ArrayList<String>();
 
-        displayTable(model, ids, fNames, lNames, dobs, medInfos, deads,meds);
+        displayTable(model, ids, fNames, lNames, dobs, medInfos, deads, meds);
 
         return "searchpatient";
     }
 
     @PostMapping("/searchSpecificPatient")
     public RedirectView searchSpecificPatient(@RequestParam("searchbar") String searchbar) {
+        if (searchbar == null || searchbar == "") {
+            return new RedirectView("/searchpatient");
+        }
+
+        if (repository.findBySECONDNAME(searchbar) == null || repository.findBySECONDNAME(searchbar).isEmpty()) {
+            return new RedirectView("/searchpatient?error=No patients with that surname found.");
+        }
         String queryParam = "?surname=";
         queryParam += searchbar;
+
         return new RedirectView("/searchpatient" + queryParam);
     }
 
